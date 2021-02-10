@@ -19,7 +19,7 @@ export default function Main(props) {
   
   return (
     <Grid item xs={12} md={8}>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom id="BlogStart">
         {title}
       </Typography>
       <Divider />

@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Link from "./Link";
 import Image from 'next/image';
+import { Divider } from "@material-ui/core";
 
 const styles = (theme) => ({
   listItem: {
@@ -24,24 +25,28 @@ const styles = (theme) => ({
     marginBottom: theme.spacing(4),
     objectFit: 'contain',
   },
+  divider: {
+    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(3),
+  }
 });
 
 const options = {
   overrides: {
     h1: {
-      component: (props) => <Typography gutterBottom variant="h4" {...props} />,
+      component: (props) => <Typography gutterBottom variant="h4" component="h3" {...props} />,
     },
     h2: {
-      component: (props) => <Typography gutterBottom variant="h6" {...props} />,
+      component: (props) => <Typography gutterBottom variant="h6" component="h4" {...props} />,
     },
     h3: {
       component: (props) => (
-        <Typography gutterBottom variant="subtitle1" {...props} />
+        <Typography gutterBottom variant="subtitle1" component={"h5"} {...props} />
       ),
     },
     h4: {
       component: (props) => (
-        <Typography gutterBottom variant="caption" paragraph {...props} />
+        <Typography gutterBottom variant="caption" paragraph component={"h6"} {...props} />
       ),
     },
     p: { component: withStyles(styles)(({ classes, ...props }) => <Typography paragraph variant="body1" className={classes.paragraph} {...props} />) },
@@ -54,8 +59,9 @@ const options = {
       )),
     },
     img: {
-      component: withStyles(styles)(({ classes, ...props }) => <img alt={props.alt}  {...props} className={classes.images} />)
-    }
+      component: withStyles(styles)(({ classes, ...props }) => <img {...props} className={classes.images} />)
+    },
+    hr: { component: withStyles(styles)(({ classes, ...props }) => <Divider variant="middle" className={classes.divider} {...props}/>)}
   },
 };
 

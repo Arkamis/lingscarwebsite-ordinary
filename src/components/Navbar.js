@@ -126,8 +126,4 @@ function AppAppBar(props) {
   );
 }
 
-AppAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
 export default AppAppBar;

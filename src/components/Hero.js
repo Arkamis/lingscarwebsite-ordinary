@@ -56,7 +56,7 @@ function ProductHero() {
         <Typography
           color="inherit"
           align="center"
-          variant="h5"
+          variant="h1"
           className={classes.h5}
         >
           Leader of the Pack - The UK's favorite car leasing website!
@@ -86,9 +86,5 @@ function ProductHero() {
       </ProductHeroLayout>
     );
 }
-
-ProductHero.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default ProductHero;

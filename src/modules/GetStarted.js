@@ -215,8 +215,4 @@ function GetStarted(props) {
   );
 }
 
-GetStarted.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
 export default GetStarted;

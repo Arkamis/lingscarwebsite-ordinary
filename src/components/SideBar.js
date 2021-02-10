@@ -7,6 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import Link from "./Link";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%"
+  },
   sidebarAboutBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
@@ -21,40 +24,45 @@ export default function Sidebar(props) {
   const { archives, description, social, title } = props;
 
   return (
-    <Grid item xs={12} md={4} >
-      <Paper elevation={0} className={classes.sidebarAboutBox}>
-        <Typography variant="h6" gutterBottom>
-          {title}
-        </Typography>
-        <Typography>{description}</Typography>
-      </Paper>
-      <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-        Archives
-      </Typography>
-      {archives.map((archive) => (
-        <Link
-          display="block"
-          variant="body1"
-          href={archive.url}
-          key={archive.title}
+    <div role="complementary" className={classes.root}>
+        <Paper className={classes.sidebarAboutBox}>
+          <Typography variant="h6" gutterBottom component="h2">
+            {title}
+          </Typography>
+          <Typography paragraph>{description}</Typography>
+        </Paper>
+        <Typography
+          variant="h6"
+          gutterBottom
+          component="h2"
+          className={classes.sidebarSection}
         >
-          {archive.title}
-        </Link>
-      ))}
-      <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-        Social
-      </Typography>
-      {social.map((network) => (
-        <Link display="block" variant="body1" href={network.url} key={network}>
-          <Grid container direction="row" spacing={1} alignItems="center">
-            <Grid item>
-              <network.icon />
+          Archives
+        </Typography>
+        {archives.map((archive) => (
+          <Link
+            display="block"
+            variant="body1"
+            href={archive.url}
+            key={archive.title}
+          >
+            {archive.title}
+          </Link>
+        ))}
+        <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+          Social
+        </Typography>
+        {social.map((network) => (
+          <Link display="block" variant="body1" href={network.url} key={network}>
+            <Grid container direction="row" spacing={1} alignItems="center">
+              <Grid item>
+                <network.icon />
+              </Grid>
+              <Grid item>{network.name}</Grid>
             </Grid>
-            <Grid item>{network.name}</Grid>
-          </Grid>
-        </Link>
-      ))}
-    </Grid>
+          </Link>
+        ))}
+    </div>
   );
 }
 

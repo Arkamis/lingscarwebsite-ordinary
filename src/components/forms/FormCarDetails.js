@@ -127,15 +127,11 @@ export default function FormCarDetails(props) {
                   {values.carTrim ? values.carTrim : "none"}
                 </MenuItem>
                 {values.carMake &&
-                  makes.find((each) => each.make === values.carMake).trims
-                
-                  && makes
+                  makes.find((each) => each.make === values.carMake).trims &&
+                  makes
                     .find((each) => each.make === values.carMake)
-                  .trims.map((trim) => {
-                    return (
-                      <MenuItem value={trim}>{trim}</MenuItem>
-                        
-                      )
+                    .trims.map((trim) => {
+                      return <MenuItem value={trim}>{trim}</MenuItem>;
                     })}
               </Select>
             </FormControl>
@@ -149,8 +145,8 @@ export default function FormCarDetails(props) {
             <div style={{ textAlign: "center" }}>
               <Image
                 src="https://images.lingscars.com/images/quote/mileagepie.gif"
-                width={300}
-                height={230}
+                width={271}
+                height={189}
                 className={classes.imgage}
                 alt="The graph shows a range of miles with their percentage of selection by customers."
               />
@@ -252,8 +248,9 @@ export default function FormCarDetails(props) {
           <Grid item xs={6}>
             <Image
               src="https://images.lingscars.com/images/quote/yearspie.gif"
-              width={250}
-              height={250}
+              width={200}
+              height={87}
+              alt="Pie chart showing the frequency of contract years chosen by the customer."
             />
           </Grid>
           <Grid item xs={12}>

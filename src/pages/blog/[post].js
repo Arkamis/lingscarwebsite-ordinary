@@ -12,6 +12,7 @@ import { Container, Divider, Typography } from "@material-ui/core";
 import { useRouter } from "next/router";
 import matter from "gray-matter";
 import Markdown from "../../components/Markdown";
+import Head from "next/head";
 // import oct2 from '../../data/content/oct2019.md';
 
 const useStyles = makeStyles((theme) => ({
@@ -60,16 +61,16 @@ Newcastle upon Tyne, NE4 7YL
 Tel 0191 460 9444
 Fax 0870 486 1130`,
   archives: [
-    { title: "March 2020", url: "/blog/march2019" },
-    { title: "February 2020", url: "/blog/feb2019" },
-    { title: "January 2020", url: "/blog/jan2019" },
-    { title: "November 1999", url: "/blog/nov2019" },
-    { title: "October 1999", url: "/blog/oct2019" },
-    { title: "September 1999", url: "/blog/sep2019" },
-    { title: "August 1999", url: "/blog/aug2019" },
-    { title: "July 1999", url: "/blog/jul2019" },
-    { title: "June 1999", url: "/blog/jun2019" },
-    { title: "April 2019", url: "/blog/apr2019" },
+    { title: "March 2020", url: "/blog/march2019/#BlogStart" },
+    { title: "February 2020", url: "/blog/feb2019/#BlogStart" },
+    { title: "January 2020", url: "/blog/jan2019/#BlogStart" },
+    { title: "November 1999", url: "/blog/nov2019/#BlogStart" },
+    { title: "October 1999", url: "/blog/oct2019/#BlogStart" },
+    { title: "September 1999", url: "/blog/sep2019/#BlogStart" },
+    { title: "August 1999", url: "/blog/aug2019/#BlogStart" },
+    { title: "July 1999", url: "/blog/jul2019/#BlogStart" },
+    { title: "June 1999", url: "/blog/jun2019/#BlogStart" },
+    { title: "April 2019", url: "/blog/apr2019/#BlogStart" },
   ],
   social: [
     {
@@ -90,34 +91,42 @@ export default function Blog(props) {
   const markdownBody = props.content;
 
   return (
-    <main>
-      <Container maxWidth="lg" className={classes.mainGrid}>
-        <MainFeaturedPost post={mainFeaturedPost} />
-        <Grid container spacing={4}>
-          {featuredPosts.map((post) => (
-            <FeaturedPost key={post.title} post={post} />
-          ))}
-        </Grid>
-        <Grid container spacing={5} className={classes.mainGrid}>
-          <Grid item xs={12} md={8}>
-            <Typography variant="h6" gutterBottom>
-              {mainFeaturedPost.title}
-            </Typography>
-            <Divider />
-            <Markdown
-              className={classes.markdown}
-              children={markdownBody}
-            />
+    <React.Fragment>
+      <Head>
+        <title>LingsCars Blog Posts</title>
+        <meta
+          name="Description"
+          content="Read more about selected year posts."
+        />
+      </Head>
+      <main>
+        <Container maxWidth="lg" className={classes.mainGrid}>
+          <MainFeaturedPost post={mainFeaturedPost} />
+          <Grid container spacing={4}>
+            {featuredPosts.map((post) => (
+              <FeaturedPost key={post.title} post={post} />
+            ))}
           </Grid>
-          <Sidebar
-            title={sidebar.title}
-            description={sidebar.description}
-            archives={sidebar.archives}
-            social={sidebar.social}
-          />
-        </Grid>
-      </Container>
-    </main>
+          <Grid container spacing={5} className={classes.mainGrid}>
+            <Grid item xs={12} md={8}>
+              <Typography variant="h6" gutterBottom>
+                {mainFeaturedPost.title}
+              </Typography>
+              <Divider />
+              <Markdown className={classes.markdown} children={markdownBody} />
+            </Grid>
+            <Grid xs={12} md={4}>
+              <Sidebar
+                title={sidebar.title}
+                description={sidebar.description}
+                archives={sidebar.archives}
+                social={sidebar.social}
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </main>
+    </React.Fragment>
   );
 }
 

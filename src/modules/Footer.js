@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     fontWeight: 'lighter',
     color: grey[500]
+  },
+  row: {
+    padding: theme.spacing(0),
+    margin: theme.spacing(0)
   }
 }));
 

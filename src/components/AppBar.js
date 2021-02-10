@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AppBar(props) {
-  const classes =useStyles()
+  const classes = useStyles()
   return <MuiAppBar elevation={0} className={classes.root} position="static" {...props} />;
 }
 

@@ -22,8 +22,10 @@ export default function Index() {
         />
       </Head>
       <Hero />
-      <Ofers />
-      <GetStarted />
+      <main>
+        <Ofers />
+        <GetStarted />
+      </main>
     </React.Fragment>
   );
 

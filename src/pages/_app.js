@@ -10,7 +10,6 @@ import theme from "../modules/theme";
 import NProgress from "nprogress";
 
 
-NProgress.configure({ showSpinner: true });
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
 });

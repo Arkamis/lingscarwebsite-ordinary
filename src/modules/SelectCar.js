@@ -84,7 +84,7 @@ export default function SelectCars() {
             <Tab
               label={car.make}
               {...a11yProps(index)}
-              icon={<img src={car.imageUrl} className={classes.imageZoom} />}
+              icon={<img src={car.imageUrl} alt={`Logotype of make ${car.make}.`} className={classes.imageZoom} />}
             />
           ))}
         </Tabs>

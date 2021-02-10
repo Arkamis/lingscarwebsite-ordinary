@@ -14,6 +14,7 @@ import Sucess from '../../components/Sucess';
 import { Alert } from '@material-ui/lab';
 import SnackAlert from '../../components/SnackAlert';
 import { PermDeviceInformationOutlined } from '@material-ui/icons';
+import Head from 'next/head';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -156,54 +157,68 @@ export default function MakeBudget() {
   };
   
   return (
-    <div className={classes.root}>
-      <Container fixed className={classes.container}>
-        <SnackAlert onClose={snackHandleClose} open={open} message={"Please check your information."} severity="error"/>
-        <Typography variant="h2">GET a NEW CAR</Typography>
-        <Stepper activeStep={activeStep}>
-          {steps.map((label, index) => {
-            return (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-        <Paper elevation={0} className={classes.stepContent}>
-          {activeStep === steps.length ? (
-            <div>
-              <Sucess
-                className={classes.instructions}
-                onReset={handleReset}
-                title={"Quote sent with success!"}
-                subtile="Stay alert on your email. We will send you further instructions to your email."
-              />
-            </div>
-          ) : (
-            <div>
-              {getCurrentStepContent(activeStep)}
-              <div className={classes.controls}>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  className={classes.button}
-                >
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
+    <React.Fragment>
+      <Head>
+        <title>Making a Quote for a Car</title>
+        <meta
+          name="Description"
+          content="Fill out the form to request a quote for your desired car."
+        />
+      </Head>
+      <div className={classes.root}>
+        <Container fixed className={classes.container}>
+          <SnackAlert
+            onClose={snackHandleClose}
+            open={open}
+            message={"Please check your information."}
+            severity="error"
+          />
+          <Typography variant="h2">GET a NEW CAR</Typography>
+          <Stepper activeStep={activeStep}>
+            {steps.map((label, index) => {
+              return (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+          <Paper elevation={0} className={classes.stepContent}>
+            {activeStep === steps.length ? (
+              <div>
+                <Sucess
+                  className={classes.instructions}
+                  onReset={handleReset}
+                  title={"Quote sent with success!"}
+                  subtile="Stay alert on your email. We will send you further instructions to your email."
+                />
               </div>
-            </div>
-          )}
-        </Paper>
-      </Container>
-    </div>
+            ) : (
+              <div>
+                {getCurrentStepContent(activeStep)}
+                <div className={classes.controls}>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={classes.button}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                  </Button>
+                </div>
+              </div>
+            )}
+          </Paper>
+        </Container>
+      </div>
+    </React.Fragment>
   );
 }
 
