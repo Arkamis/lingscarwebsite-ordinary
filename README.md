@@ -7,7 +7,7 @@ Here are the links for:
 
 ## Video of accesibility guidelines explained.
 
-[**url📹**]: _To be upload_
+[**url📹**]: [Link to the video presentation](https://www.youtube.com/watch?v=7NpLI_TFh7A&feature=youtu.be)
 ### The idea behind the example
 
 [Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps
