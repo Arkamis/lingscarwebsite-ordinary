@@ -6,25 +6,25 @@ import theme from '../modules/theme'
 export default class MyDocument extends Document {
 	render() {
 		return (
-      <Html lang="en">
-        <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700display=swap"
-          />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
+			<Html lang="en">
+				<Head>
+					{/* PWA primary color */}
+					<meta name="theme-color" content={theme.palette.primary.main} />
+					<link
+						rel="stylesheet"
+						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700display=swap"
+					/>
+					<link
+						rel="stylesheet"
+						href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+					/>
+				</Head>
+				<body>
+					<Main />
+					<NextScript />
+				</body>
+			</Html>
+		)
 	}
 }
 
@@ -60,7 +60,7 @@ MyDocument.getInitialProps = async (ctx) => {
 	ctx.renderPage = () =>
 		originalRenderPage({
 			enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-		});
+		})
 
 	const initialProps = await Document.getInitialProps(ctx)
 

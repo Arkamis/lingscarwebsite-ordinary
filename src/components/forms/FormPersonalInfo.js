@@ -1,36 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, makeStyles, TextField, Typography } from '@material-ui/core';
-import { AccountCircle, Email, Face, LocationOn } from '@material-ui/icons';
-import MapLocation from '../MapLocation';
+import { Grid, makeStyles, TextField, Typography } from '@material-ui/core'
+import { AccountCircle, Email, Face, LocationOn } from '@material-ui/icons'
+import MapLocation from '../MapLocation'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    padding: theme.spacing(3, 3),
-  },
-  textField: {
-    textAlign: "center",
-    marginLeft: theme.spacing(20),
-  },
-  formLabel: {
-    margin: theme.spacing(0, 4),
-  },
-  title: {
-    margin: theme.spacing(2, 4),
-    textAlign: "left",
-  },
-  description: {
-    marginBottom: theme.spacing(5),
-    marginLeft: theme.spacing(5),
-  },
-}));
+	root: {
+		width: '100%',
+		padding: theme.spacing(3, 3),
+	},
+	textField: {
+		textAlign: 'center',
+		marginLeft: theme.spacing(20),
+	},
+	formLabel: {
+		margin: theme.spacing(0, 4),
+	},
+	title: {
+		margin: theme.spacing(2, 4),
+		textAlign: 'left',
+	},
+	description: {
+		marginBottom: theme.spacing(5),
+		marginLeft: theme.spacing(5),
+	},
+}))
 
 function FormPersonalInfo(props) {
-  const classes = useStyles();
-  const { handleChange, values } = props;
+	const classes = useStyles()
+	const { handleChange, values } = props
 
-  return (
+	return (
     <div className={classes.root}>
       <Grid container spacing={1} justify="center" alignContent="center">
         <Grid item xs={12}>
@@ -69,6 +69,7 @@ function FormPersonalInfo(props) {
               onChange={handleChange("firstName")}
               type="text"
               required
+              autoComplete
               autoFocus
             />
           </Grid>
@@ -83,6 +84,7 @@ function FormPersonalInfo(props) {
               required
               label="Last Name"
               name="lastName"
+              autoComplete
               helperText="Last name appear on your birth certificate."
               onChange={handleChange("lastName")}
               type="text"
@@ -96,7 +98,8 @@ function FormPersonalInfo(props) {
               id="aliasInput"
               defaultValue={values.alias}
               label="Alias"
-              placeholder={`eg: "Dave", "Pete", "Suzie", "Topgun", "Nobby"`}
+              autoComplete
+              placeholder={'eg: "Dave", "Pete", "Suzie", "Topgun", "Nobby"'}
               name="alias"
               helperText="The name I will call you by, or appear on comments."
               onChange={handleChange("alias")}
@@ -118,6 +121,7 @@ function FormPersonalInfo(props) {
           </Grid>
           <Grid item>
             <TextField
+              autoComplete
               id="emailInput"
               label="Email"
               defaultValue={values.email}
@@ -127,7 +131,6 @@ function FormPersonalInfo(props) {
               onChange={handleChange("email")}
               type="email"
               required
-              
             />
           </Grid>
         </Grid>
@@ -147,6 +150,7 @@ function FormPersonalInfo(props) {
             <TextField
               id="addressInput"
               label="Address"
+              autoComplete
               defaultValue={values.address}
               name="address"
               placeholder={'Ex: "Manzanillo, Colima, Mexico" '}
@@ -163,9 +167,9 @@ function FormPersonalInfo(props) {
 }
 
 FormPersonalInfo.propTypes = {
-  values: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
-};
+	values: PropTypes.object.isRequired,
+	handleChange: PropTypes.func.isRequired,
+}
 
 export default FormPersonalInfo
 
